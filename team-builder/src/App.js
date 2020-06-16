@@ -3,11 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import Form from './Form'
 
+
 const initialMemberList = [
   {
-    username: "",
-    email: "",
-    role: "",
+    username: "Khwanchai Phaipha",
+    email: "porpan00@hotmail.com",
+    role: "Full stack Student",
   },
 ]
 
@@ -21,6 +22,16 @@ function App() {
   const [formValues, setFormValues] = useState(initailFormValues)
   const [error, setError] = useState('')
 
+  const Member = ({list}) =>(
+      <div className="member-container">
+        <h3>{list.username}</h3>
+        <p>
+          <span className="member-container-span">Email:</span> {list.email} 
+        </p>
+        <p> <span className="member-container-span">Role:</span> {list.role} </p>
+      </div>
+    )
+
   const onInputChange = event =>{
     const {name, value} = event.target
     setFormValues({
@@ -30,48 +41,53 @@ function App() {
 
   }
   const onSubmit = event =>{
-    event.preventDefault();
+    event.preventDefault()
     if(!formValues.username || !formValues.email || !formValues.role){
       setError('You need to fill the right info')
       return
     }
-    const newMember = {...member}
-    setMember(member =>[newMember, ...member]
-    )
+    const newMember = {...formValues}
+    setMember(member =>[newMember, ...member])
+    setFormValues(initailFormValues)
   }
 
-  const Member = ({list}) =>(
-    <div className="member-container">
-      <h3>{list.username}</h3>
-      <p>Email:{list.email} </p>
-      <p>Role: {list.role} </p>
-    </div>
-  )
-
+ const makeStyle = (m, b, w,) =>{
+   return {
+     div: {
+       margin: m,
+       border: b,
+       width: w,
+     }
+   }
+ }
+ 
+ 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Member App</h1>     
+        <h1>Team Member</h1>     
         <span style={{color:'red'}}>{error} </span>
       </header>
       <div className="container">
-        <div>
+        <div className="form-container">
           <Form 
             value={formValues}
             onInputChange={onInputChange}
             onSubmit={onSubmit}
           />
         </div>
-        <div className="member-container">
+        <div style={makeStyle( '0% 10%','70%', 'solid', 'flex', 'wrap').div} >
           <h3>Member List</h3>
           {
             member.map(mem =>{
-              console.log (mem)
              return <Member key={mem.username} list={mem} />
             })
-          }
-          
+          } 
+           <div>
+          <button>Edit</button>
+        </div>      
         </div>
+       
 
       </div>
     </div>

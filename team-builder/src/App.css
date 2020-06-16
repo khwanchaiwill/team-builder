@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  max-width: 500vh;
 }
 
 .App-logo {
@@ -41,6 +42,21 @@
   display: flex;
   flex-wrap: wrap;
   background-color: aquamarine;
-  max-width: 350vh;
+  max-width: 500vh;
   min-height: 100vh;
+}
+.form-container{
+  width: 100%;
+  max-width: 500vh;
+
+}
+.member-container{
+  text-align: start;
+}
+.member-container-span{
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.form-member-container{
+  line-height: 2;
 }
