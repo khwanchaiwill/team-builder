@@ -6,7 +6,6 @@ function Form(props) {
         value,
         onInputChange,
         onSubmit,
-        memberToEdit,
     } = props
 
 
@@ -57,9 +56,7 @@ return (
                     <option>Teacher</option>
                     <option>Finacial Manager</option>
                     <option>Technician</option>
-
                 </select>
-
             </label><br/>
             <button>Submit</button>
         </div>
